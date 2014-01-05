@@ -4,7 +4,7 @@ var	fs = require('fs'),
 	winston = module.parent.require('winston'),
 	Meta = module.parent.require('./meta'),
 
-	Mailgun = require('mailgun-js')(Meta.config['mailgun:apiKey'], Meta.config['mailgun:domain']),
+	Mailgun = require('mailgun-js')(Meta.config['mailgun:apiKey'] || 'Replace Me', Meta.config['mailgun:domain'] || 'Replace Me'),
 	Emailer = {};
 
 Emailer.send = function(data) {
@@ -13,7 +13,7 @@ Emailer.send = function(data) {
 	// 	PostageApp.setApiKey(Meta.config['postageapp:apiKey']);
 	// }
 
-	mailgun.messages.send({
+	Mailgun.messages.send({
 		to: data.to,
 		subject: data.subject,
 		from: data.from,

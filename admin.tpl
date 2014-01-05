@@ -31,9 +31,19 @@
 
 <form role="form">
 	<fieldset>
-		<div class="form-group">
-			<label for="mailgun:apiKey">API Key</label>
-			<input type="text" class="form-control" id="mailgun:apiKey" data-field="mailgun:apiKey" />
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="mailgun:apiKey">API Key</label>
+					<input type="text" class="form-control" id="mailgun:apiKey" data-field="mailgun:apiKey" />
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="mailgun:domain">Domain</label>
+					<input type="text" class="form-control" id="mailgun:domain" data-field="mailgun:domain" />
+				</div>
+			</div>
 		</div>
 
 		<button class="btn btn-lg btn-primary" id="save">Save</button>

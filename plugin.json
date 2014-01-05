@@ -1,8 +1,8 @@
 {
-    "id": "nodebb-plugin-emailer-postageapp",
-    "name": "Emailer (PostageApp)",
-    "description": "PostageApp Emailer for NodeBB",
-    "url": "https://github.com/julianlam/nodebb-plugin-emailer-postageapp",
+    "id": "nodebb-plugin-emailer-mailgun",
+    "name": "Emailer (Mailgun)",
+    "description": "Mailgun Emailer for NodeBB",
+    "url": "https://github.com/julianlam/nodebb-plugin-emailer-mailgun",
     "library": "./index.js",
     "hooks": [
         { "hook": "action:email.send", "method": "send" },

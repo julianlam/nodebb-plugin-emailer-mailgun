@@ -46,25 +46,6 @@ Emailer.admin = {
 		});
 
 		callback(null, custom_header);
-	},
-	route: function(custom_routes, callback) {
-		fs.readFile(path.join(__dirname, 'admin.tpl'), function(err, tpl) {
-			custom_routes.routes.push({
-				route: '/plugins/emailer-mailgun',
-				method: "get",
-				options: function(req, res, callback) {
-					callback({
-						req: req,
-						res: res,
-						route: '/plugins/emailer-mailgun',
-						name: 'Emailer (Mailgun)',
-						content: tpl
-					});
-				}
-			});
-
-			callback(null, custom_routes);
-		});
 	}
 };
 

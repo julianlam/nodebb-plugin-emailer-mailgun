@@ -29,29 +29,35 @@
 
 <hr />
 
-<form role="form">
+<form role="form" class="emailer-settings">
 	<fieldset>
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label for="mailgun:apiKey">API Key</label>
-					<input type="text" class="form-control" id="mailgun:apiKey" data-field="mailgun:apiKey" />
+					<label for="apiKey">API Key</label>
+					<input type="text" class="form-control" id="apiKey" name="apiKey" />
 				</div>
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label for="mailgun:domain">Domain</label>
-					<input type="text" class="form-control" id="mailgun:domain" data-field="mailgun:domain" />
+					<label for="domain">Domain</label>
+					<input type="text" class="form-control" id="domain" name="domain" />
 				</div>
 			</div>
 		</div>
 
-		<button class="btn btn-lg btn-primary" id="save">Save</button>
+		<button class="btn btn-lg btn-primary" id="save" type="button">Save</button>
 	</fieldset>
 </form>
 
 <script type="text/javascript">
-	require(['forum/admin/settings'], function(Settings) {
-		Settings.prepare();
+	require(['settings'], function(Settings) {
+		Settings.load('mailgun', $('.emailer-settings'));
+
+		$('#save').on('click', function() {
+			Settings.save('mailgun', $('.emailer-settings'), function() {
+				socket.emit('admin.restart');
+			});
+		});
 	});
 </script>

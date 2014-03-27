@@ -4,9 +4,10 @@
     "description": "Mailgun Emailer for NodeBB",
     "url": "https://github.com/julianlam/nodebb-plugin-emailer-mailgun",
     "library": "./index.js",
+    "templates": "templates",
     "hooks": [
         { "hook": "action:email.send", "method": "send" },
-        { "hook": "filter:admin.header.build", "method": "admin.menu", "callbacked": false },
-        { "hook": "filter:admin.create_routes", "method": "admin.route", "callbacked": true }
+        { "hook": "filter:admin.header.build", "method": "admin.menu" },
+        { "hook": "action:app.load", "method": "init" }
     ]
 }

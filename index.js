@@ -4,15 +4,23 @@ var	fs = require('fs'),
 	winston = module.parent.require('winston'),
 	Meta = module.parent.require('./meta'),
 
-	Mailgun = require('mailgun-js')(Meta.config['mailgun:apiKey'] || 'Replace Me', Meta.config['mailgun:domain'] || 'Replace Me'),
-	Emailer = {};
+	Emailer = {},
+	Mailgun;
+
+Emailer.init = function(app, middleware, controllers) {
+	function render(req, res, next) {
+		res.render('admin/plugins/emailer-mailgun', {});
+	}
+
+	Meta.settings.get('mailgun', function(err, settings) {
+		Mailgun = require('mailgun-js')(settings['apiKey'], settings['domain']);
+	});
+
+	app.get('/admin/plugins/emailer-mailgun', middleware.admin.buildHeader, render);
+	app.get('/api/admin/plugins/emailer-mailgun', render);
+};
 
 Emailer.send = function(data) {
-	// Update the API key, if necessary
-	// if (PostageApp.getApiKey && PostageApp.setApiKey && PostageApp.getApiKey() !== Meta.config['postageapp:apiKey']) {
-	// 	PostageApp.setApiKey(Meta.config['postageapp:apiKey']);
-	// }
-
 	Mailgun.messages.send({
 		to: data.to,
 		subject: data.subject,
@@ -27,7 +35,7 @@ Emailer.send = function(data) {
 			winston.error('[emailer.mailgun] ' + message);
 		}
 	});
-}
+};
 
 Emailer.admin = {
 	menu: function(custom_header, callback) {
@@ -37,7 +45,7 @@ Emailer.admin = {
 			"name": 'Emailer (MailGun)'
 		});
 
-		return custom_header;
+		callback(null, custom_header);
 	},
 	route: function(custom_routes, callback) {
 		fs.readFile(path.join(__dirname, 'admin.tpl'), function(err, tpl) {

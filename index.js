@@ -13,7 +13,11 @@ Emailer.init = function(app, middleware, controllers) {
 	}
 
 	Meta.settings.get('mailgun', function(err, settings) {
-		Mailgun = require('mailgun-js')(settings['apiKey'], settings['domain']);
+		if (!err && settings && settings.apiKey && settings.domain) {
+			Mailgun = require('mailgun-js')(settings.apiKey, settings.domain);
+		} else {
+			winston.error('[plugins/emailer-mailgun] API key or Domain not set!');
+		}
 	});
 
 	app.get('/admin/plugins/emailer-mailgun', middleware.admin.buildHeader, render);

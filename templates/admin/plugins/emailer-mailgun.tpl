@@ -15,7 +15,7 @@
 		</p>
 		<ol>
 			<li>
-				Register for an account on <a href="http://mailgun.com">http://mailgun.com</a>. Mailgun offers a free tier with up to 10,000 free emails daily.
+				Register for an account on <a href="http://mailgun.com">http://mailgun.com</a>. Mailgun offers a free tier with up to 10,000 free emails monthly.
 			</li>
 			<li>
 				(Optional) Set up a custom domain at <a href="https://mailgun.com/cp/domains/new">https://mailgun.com/cp/domains/new</a>

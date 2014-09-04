@@ -21,6 +21,6 @@
   "homepage": "https://github.com/julianlam/nodebb-plugin-emailer-mailgun",
   "dependencies": {
     "path": "~0.4.9",
-    "mailgun-js": "~0.2.2"
+    "mailgun-js": "^0.5.4"
   }
 }

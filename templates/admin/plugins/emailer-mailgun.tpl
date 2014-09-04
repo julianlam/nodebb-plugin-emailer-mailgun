@@ -56,7 +56,16 @@
 
 		$('#save').on('click', function() {
 			Settings.save('mailgun', $('.emailer-settings'), function() {
-				socket.emit('admin.restart');
+				app.alert({
+					type: 'success',
+					alert_id: 'mailgun-saved',
+					title: 'Settings Saved',
+					message: 'Click here to reload NodeBB',
+					timeout: 2500,
+					clickfn: function() {
+						socket.emit('admin.reload');
+					}
+				});
 			});
 		});
 	});

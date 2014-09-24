@@ -31,6 +31,10 @@ Emailer.init = function(app, middleware, controllers, callback) {
 };
 
 Emailer.send = function(data) {
+	if (!server) {
+		return winston.error('[emailer.mailgun] Mailgun is not set up properly!')
+	}
+
 	server.messages().send({
 		to: data.to,
 		subject: data.subject,

@@ -8,7 +8,7 @@ var	fs = require('fs'),
 	Mailgun = require('mailgun-js'),
 	server;
 
-Emailer.init = function(app, middleware, controllers, callback) {
+Emailer.init = function(params, callback) {
 	function render(req, res, next) {
 		res.render('admin/plugins/emailer-mailgun', {});
 	}
@@ -24,8 +24,8 @@ Emailer.init = function(app, middleware, controllers, callback) {
 		}
 	});
 
-	app.get('/admin/plugins/emailer-mailgun', middleware.admin.buildHeader, render);
-	app.get('/api/admin/plugins/emailer-mailgun', render);
+	params.router.get('/admin/plugins/emailer-mailgun', params.middleware.admin.buildHeader, render);
+	params.router.get('/api/admin/plugins/emailer-mailgun', render);
 
 	callback();
 };

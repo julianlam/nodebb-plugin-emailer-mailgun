@@ -24,8 +24,8 @@ Emailer.init = function(params, callback) {
 		}
 	});
 
-	params.app.get('/admin/plugins/emailer-mailgun', params.middleware.admin.buildHeader, render);
-	params.app.get('/api/admin/plugins/emailer-mailgun', render);
+	params.router.get('/admin/plugins/emailer-mailgun', params.middleware.admin.buildHeader, render);
+	params.router.get('/api/admin/plugins/emailer-mailgun', render);
 
 	callback();
 };

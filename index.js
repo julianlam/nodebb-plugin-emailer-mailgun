@@ -30,9 +30,10 @@ Emailer.init = function(params, callback) {
 	callback();
 };
 
-Emailer.send = function(data) {
+Emailer.send = function(data, callback) {
 	if (!server) {
-		return winston.error('[emailer.mailgun] Mailgun is not set up properly!')
+		winston.error('[emailer.mailgun] Mailgun is not set up properly!')
+		return callback(null, data);
 	}
 
 	server.messages().send({
@@ -43,11 +44,13 @@ Emailer.send = function(data) {
 		text: data.plaintext
 	}, function (err, body) {
 		if (!err) {
-			winston.info('[emailer.mailgun] Sent `' + data.template + '` email to uid ' + data.uid);
+			winston.verbose('[emailer.mailgun] Sent `' + data.template + '` email to uid ' + data.uid);
 		} else {
 			winston.warn('[emailer.mailgun] Unable to send `' + data.template + '` email to uid ' + data.uid + '!!');
 			winston.error('[emailer.mailgun] (' + err.message + ')');
 		}
+
+		return callback(err, data);
 	});
 };
 

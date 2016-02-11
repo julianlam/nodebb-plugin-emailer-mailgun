@@ -15,7 +15,7 @@ Emailer.init = function(params, callback) {
 
 	Meta.settings.get('mailgun', function(err, settings) {
 		if (!err && settings && settings.apiKey && settings.domain) {
-			server = new Mailgun({
+			server = Mailgun({
 				apiKey: settings.apiKey,
 				domain: settings.domain
 			});

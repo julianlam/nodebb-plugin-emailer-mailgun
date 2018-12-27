@@ -1,8 +1,8 @@
 var	fs = require('fs'),
 	path = require('path'),
 
-	winston = module.parent.require('winston'),
-	Meta = module.parent.require('./meta'),
+	winston = require.main.require('winston'),
+	Meta = require.main.require('./src/meta'),
 
 	Emailer = {},
 	Mailgun = require('mailgun-js'),

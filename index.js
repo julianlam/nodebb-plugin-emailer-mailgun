@@ -1,57 +1,55 @@
-var	fs = require('fs'),
-	path = require('path'),
+'use strict';
 
-	winston = require.main.require('winston'),
-	Meta = require.main.require('./src/meta'),
+const winston = require.main.require('winston');
+const meta = require.main.require('./src/meta');
 
-	Emailer = {},
-	Mailgun = require('mailgun-js'),
-	server;
+const Emailer = {};
 
-Emailer.init = function(params, callback) {
+const formData = require('form-data');
+const Mailgun = require('mailgun.js');
+const mailgun = new Mailgun(formData);
+let mg;
+
+Emailer.init = async (params) => {
 	function render(req, res, next) {
 		res.render('admin/plugins/emailer-mailgun', {});
 	}
 
-	Meta.settings.get('mailgun', function(err, settings) {
-		if (!err && settings && settings.apiKey && settings.domain) {
-			server = Mailgun({
-				apiKey: settings.apiKey,
-				domain: settings.domain
-			});
-		} else {
-			winston.error('[plugins/emailer-mailgun] API key or Domain not set!');
-		}
-	});
+	const { apiKey, domain } = await meta.settings.get('mailgun');
+	if (apiKey && domain) {
+		mg = mailgun.client({ username: 'api', key: apiKey });
+	} else {
+		winston.error('[plugins/emailer-mailgun] API key or Domain not set!');
+	}
 
 	params.router.get('/admin/plugins/emailer-mailgun', params.middleware.admin.buildHeader, render);
 	params.router.get('/api/admin/plugins/emailer-mailgun', render);
-
-	callback();
 };
 
-Emailer.send = function(data, callback) {
-	if (!server) {
+Emailer.send = async (data) => {
+	if (!mg) {
 		winston.error('[emailer.mailgun] Mailgun is not set up properly!')
 		return callback(null, data);
 	}
 
-	server.messages().send({
-		to: data.to,
-		subject: data.subject,
-		from: data.from,
-		html: data.html,
-		text: data.plaintext
-	}, function (err, body) {
-		if (!err) {
-			winston.verbose('[emailer.mailgun] Sent `' + data.template + '` email to uid ' + data.uid);
-		} else {
-			winston.warn('[emailer.mailgun] Unable to send `' + data.template + '` email to uid ' + data.uid + '!!');
-			winston.error('[emailer.mailgun] (' + err.message + ')');
-		}
+	const { domain } = await meta.settings.get('mailgun');
 
-		return callback(err, data);
-	});
+	try {
+		await mg.messages.create(domain, {
+			to: data.to,
+			subject: data.subject,
+			from: data.from,
+			html: data.html,
+			text: data.plaintext
+		});
+		winston.verbose('[emailer.mailgun] Sent `' + data.template + '` email to uid ' + data.uid);
+	} catch (err) {
+		console.log(err);
+		winston.warn('[emailer.mailgun] Unable to send `' + data.template + '` email to uid ' + data.uid + '!!');
+		winston.error('[emailer.mailgun] (' + err.message + ')');
+	}
+
+	return data;
 };
 
 Emailer.admin = {

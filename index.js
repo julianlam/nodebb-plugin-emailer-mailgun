@@ -7,11 +7,12 @@ const Emailer = {};
 
 const formData = require('form-data');
 const Mailgun = require('mailgun.js');
+
 const mailgun = new Mailgun(formData);
 let mg;
 
 Emailer.init = async (params) => {
-	function render(req, res, next) {
+	function render(req, res) {
 		res.render('admin/plugins/emailer-mailgun', {});
 	}
 
@@ -28,8 +29,8 @@ Emailer.init = async (params) => {
 
 Emailer.send = async (data) => {
 	if (!mg) {
-		winston.error('[emailer.mailgun] Mailgun is not set up properly!')
-		return callback(null, data);
+		winston.error('[emailer.mailgun] Mailgun is not set up properly!');
+		return data;
 	}
 
 	const { domain } = await meta.settings.get('mailgun');
@@ -40,28 +41,28 @@ Emailer.send = async (data) => {
 			subject: data.subject,
 			from: data.from,
 			html: data.html,
-			text: data.plaintext
+			text: data.plaintext,
 		});
-		winston.verbose('[emailer.mailgun] Sent `' + data.template + '` email to uid ' + data.uid);
+		winston.verbose(`[emailer.mailgun] Sent \`${data.template}\` email to uid ${data.uid}`);
 	} catch (err) {
 		console.log(err);
-		winston.warn('[emailer.mailgun] Unable to send `' + data.template + '` email to uid ' + data.uid + '!!');
-		winston.error('[emailer.mailgun] (' + err.message + ')');
+		winston.warn(`[emailer.mailgun] Unable to send \`${data.template}\` email to uid ${data.uid}!!`);
+		winston.error(`[emailer.mailgun] (${err.message})`);
 	}
 
 	return data;
 };
 
 Emailer.admin = {
-	menu: function(custom_header, callback) {
+	menu: function (custom_header, callback) {
 		custom_header.plugins.push({
-			"route": '/plugins/emailer-mailgun',
-			"icon": 'fa-envelope-o',
-			"name": 'Emailer (MailGun)'
+			route: '/plugins/emailer-mailgun',
+			icon: 'fa-envelope-o',
+			name: 'Emailer (MailGun)',
 		});
 
 		callback(null, custom_header);
-	}
+	},
 };
 
 module.exports = Emailer;

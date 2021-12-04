@@ -30,6 +30,6 @@
   },
   "devDependencies": {
     "eslint": "8.4.0",
-    "eslint-plugin-import": "2.x"
+    "eslint-plugin-import": "2.25.3"
   }
 }

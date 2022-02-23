@@ -814,10 +814,10 @@ lodash.merge@^4.6.2:
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-mailgun.js@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/mailgun.js/-/mailgun.js-4.0.0.tgz#40e8831979166544c824a99c3ac407f433b7bf55"
-  integrity sha512-eU9HQrbzkONtWLJrmz8AiG6CBdIVsJMEwpAGAZz8HeSPL5nvpAkoGp70DilqIYQOQJ0wSwnxcrjPWKcpXPCcQw==
+mailgun.js@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/mailgun.js/-/mailgun.js-5.0.0.tgz#6a43ddea6f9d0dccbd98f05691cc90b06f0eafba"
+  integrity sha512-l28GKPbS1w6EILJ/pTZJww2TWPbMaZHRM9nishwk/Ayjv+4EvaeW6D9LW+D5jGRmIxVTLIO++Qshb4VEo6T+XQ==
   dependencies:
     base-64 "^1.0.0"
     bluebird "^3.7.2"

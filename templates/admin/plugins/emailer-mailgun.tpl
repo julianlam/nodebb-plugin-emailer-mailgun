@@ -46,6 +46,13 @@
 			</div>
 		</div>
 
+		<div class="checkbox">
+			<label for="eu" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+				<input type="checkbox" class="mdl-switch__input" id="eu" name="eu">
+				<span class="mdl-switch__label"><strong>Account is hosted in the EU</strong></span>
+			</label>
+		</div>
+
 		<button class="btn btn-lg btn-primary" id="save" type="button">Save</button>
 	</fieldset>
 </form>

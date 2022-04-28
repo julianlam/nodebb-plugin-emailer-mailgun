@@ -16,9 +16,14 @@ Emailer.init = async (params) => {
 		res.render('admin/plugins/emailer-mailgun', {});
 	}
 
-	const { apiKey, domain } = await meta.settings.get('mailgun');
+	const { apiKey, domain, eu } = await meta.settings.get('mailgun');
 	if (apiKey && domain) {
-		mg = mailgun.client({ username: 'api', key: apiKey });
+		const options = { username: 'api', key: apiKey };
+		if (eu === 'on') {
+			options.url = 'https://api.eu.mailgun.net';
+		}
+
+		mg = mailgun.client(options);
 	} else {
 		winston.error('[plugins/emailer-mailgun] API key or Domain not set!');
 	}

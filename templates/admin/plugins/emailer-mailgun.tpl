@@ -49,24 +49,3 @@
 		<button class="btn btn-lg btn-primary" id="save" type="button">Save</button>
 	</fieldset>
 </form>
-
-<script type="text/javascript">
-	require(['settings'], function(Settings) {
-		Settings.load('mailgun', $('.emailer-settings'));
-
-		$('#save').on('click', function() {
-			Settings.save('mailgun', $('.emailer-settings'), function() {
-				app.alert({
-					type: 'success',
-					alert_id: 'mailgun-saved',
-					title: 'Settings Saved',
-					message: 'Click here to reload NodeBB',
-					timeout: 2500,
-					clickfn: function() {
-						socket.emit('admin.reload');
-					}
-				});
-			});
-		});
-	});
-</script>

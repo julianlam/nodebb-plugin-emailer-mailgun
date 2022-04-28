@@ -9,5 +9,8 @@
         { "hook": "static:email.send", "method": "send" },
         { "hook": "filter:admin.header.build", "method": "admin.menu" },
         { "hook": "static:app.load", "method": "init" }
-    ]
+    ],
+    "modules": {
+        "../admin/plugins/emailer-mailgun.js": "./static/lib/admin.js"
+    }
 }

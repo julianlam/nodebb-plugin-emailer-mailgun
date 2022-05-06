@@ -816,17 +816,16 @@ lodash.merge@^4.6.2:
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
-mailgun.js@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/mailgun.js/-/mailgun.js-4.0.0.tgz#40e8831979166544c824a99c3ac407f433b7bf55"
-  integrity sha512-eU9HQrbzkONtWLJrmz8AiG6CBdIVsJMEwpAGAZz8HeSPL5nvpAkoGp70DilqIYQOQJ0wSwnxcrjPWKcpXPCcQw==
+mailgun.js@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/mailgun.js/-/mailgun.js-6.0.0.tgz#37147d85db57da6442ff6db95e914d29ac687e8e"
+  integrity sha512-D8fyFYPQCOD3jt+FZzbyaK+R+T6HIisS01kcgNSjG5KFc9TOIKLIKBx6EAE6Na3p0OfWhM7g4PC413jQoNWUoQ==
   dependencies:
     base-64 "^1.0.0"
     bluebird "^3.7.2"
     ky "^0.25.1"
     ky-universal "^0.8.2"
-    url "^0.11.0"
-    url-join "0.0.1"
+    url-join "^4.0.1"
     web-streams-polyfill "^3.0.1"
     webpack-merge "^5.4.0"
 
@@ -1010,20 +1009,10 @@ process@^0.11.1:
   resolved "https://registry.yarnpkg.com/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha1-czIwDoQBYb2j5podHZGn1LwW8YI=
 
-punycode@1.3.2:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
-  integrity sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
-
 punycode@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
   integrity sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
-
-querystring@0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
-  integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
 
 regexpp@^3.2.0:
   version "3.2.0"
@@ -1181,18 +1170,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-url-join@0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/url-join/-/url-join-0.0.1.tgz#1db48ad422d3402469a87f7d97bdebfe4fb1e3c8"
-  integrity sha1-HbSK1CLTQCRpqH99l73r/k+x48g=
-
-url@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
-  integrity sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=
-  dependencies:
-    punycode "1.3.2"
-    querystring "0.2.0"
+url-join@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/url-join/-/url-join-4.0.1.tgz#b642e21a2646808ffa178c4c5fda39844e12cde7"
+  integrity sha512-jk1+QP6ZJqyOiuEI9AEWQfju/nB2Pw466kbA0LEZljHwKeMgd9WrAEgEGxjPDD2+TNbbb37rTyhEfrCXfuKXnA==
 
 util@^0.10.3:
   version "0.10.4"

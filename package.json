@@ -29,7 +29,7 @@
     "compatibility": "^1.11"
   },
   "devDependencies": {
-    "eslint": "8.26.0",
+    "eslint": "8.27.0",
     "eslint-plugin-import": "2.26.0"
   }
 }

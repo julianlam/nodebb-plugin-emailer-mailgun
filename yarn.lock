@@ -987,7 +987,7 @@ isexe@^2.0.0:
 isobject@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
-  integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
+  integrity sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==
 
 js-sdsl@^4.1.4:
   version "4.1.4"
@@ -1057,9 +1057,9 @@ lodash.merge@^4.6.2:
   integrity sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ==
 
 mailgun.js@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/mailgun.js/-/mailgun.js-4.0.0.tgz#40e8831979166544c824a99c3ac407f433b7bf55"
-  integrity sha512-eU9HQrbzkONtWLJrmz8AiG6CBdIVsJMEwpAGAZz8HeSPL5nvpAkoGp70DilqIYQOQJ0wSwnxcrjPWKcpXPCcQw==
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/mailgun.js/-/mailgun.js-4.2.3.tgz#6b1f05c8e682274d2c296a6ab10771a520212744"
+  integrity sha512-vmiZBkYpz7bDcabdUhh1QP1aCfLkrJz1us1CrDP9vPQN0FuM6QdcxqE/MTyutyNGvZ2nEiqOpZAJRkAHl6lzVg==
   dependencies:
     base-64 "^1.0.0"
     bluebird "^3.7.2"
@@ -1258,7 +1258,7 @@ process@^0.11.1:
 punycode@1.3.2:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
-  integrity sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
+  integrity sha512-RofWgt/7fL5wP1Y7fxE7/EmTLzQVnB0ycyibJ0OOHIlJqTNzglYFxVwETOcIoJqJmpDXJ9xImDv+Fq34F/d4Dw==
 
 punycode@^2.1.0:
   version "2.1.1"
@@ -1268,7 +1268,7 @@ punycode@^2.1.0:
 querystring@0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.0.tgz#b209849203bb25df820da756e747005878521620"
-  integrity sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=
+  integrity sha512-X/xY82scca2tau62i9mDyU9K+I+djTMUsvwf7xnUX5GLvVzgJybOJf4Y6o9Zx3oJK/LSXg5tTZBjwzqVPaPO2g==
 
 queue-microtask@^1.2.2:
   version "1.2.3"
@@ -1488,12 +1488,12 @@ uri-js@^4.2.2:
 url-join@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/url-join/-/url-join-0.0.1.tgz#1db48ad422d3402469a87f7d97bdebfe4fb1e3c8"
-  integrity sha1-HbSK1CLTQCRpqH99l73r/k+x48g=
+  integrity sha512-H6dnQ/yPAAVzMQRvEvyz01hhfQL5qRWSEt7BX8t9DqnPw9BjMb64fjIRq76Uvf1hkHp+mTZvEVJ5guXOT0Xqaw==
 
 url@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
-  integrity sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=
+  integrity sha512-kbailJa29QrtXnxgq+DdCEGlbTeYM2eJUxsz6vjZavrCYPMIFHMKQmSKYAIuUK2i7hgPm28a8piX5NTUtM/LKQ==
   dependencies:
     punycode "1.3.2"
     querystring "0.2.0"
@@ -1506,9 +1506,9 @@ util@^0.10.3:
     inherits "2.0.3"
 
 web-streams-polyfill@^3.0.1:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.0.tgz#a6b74026b38e4885869fb5c589e90b95ccfc7965"
-  integrity sha512-EqPmREeOzttaLRm5HS7io98goBgZ7IVz79aDvqjD0kYXLtFZTc0T/U6wHTPKyIjb+MdN7DFIIX6hgdBEpWmfPA==
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.1.tgz#71c2718c52b45fd49dbeee88634b3a60ceab42a6"
+  integrity sha512-e0MO3wdXWKrLbL0DgGnUV7WHVuw9OUvL4hjgnPkIeEvESk74gAITi5G606JtZPp39cd8HA9VQzCIvA49LpPN5Q==
 
 webpack-merge@^5.4.0:
   version "5.8.0"

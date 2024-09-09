@@ -16,7 +16,9 @@ let mg;
 
 Emailer.init = async (params) => {
 	function render(req, res) {
-		res.render('admin/plugins/emailer-mailgun', {});
+		res.render('admin/plugins/emailer-mailgun', {
+			title: 'Emailer (Mailgun)',
+		});
 	}
 
 	const { apiKey, domain, eu } = await meta.settings.get('mailgun');

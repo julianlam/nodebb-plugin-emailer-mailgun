@@ -27,10 +27,11 @@
     "axios": "1.7.7"
   },
   "nbbpm": {
-    "compatibility": "^1.11"
+    "compatibility": "^3.2.x"
   },
   "devDependencies": {
-    "eslint": "9.10.0",
+    "eslint": "8.57.0",
+    "eslint-config-nodebb": "0.2.1",
     "eslint-plugin-import": "2.30.0"
   }
 }

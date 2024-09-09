@@ -8,10 +8,10 @@ const meta = require.main.require('./src/meta');
 
 const Emailer = module.exports;
 
-const formData = require('form-data');
+const FormData = require('form-data');
 const Mailgun = require('mailgun.js');
 
-const mailgun = new Mailgun(formData);
+const mailgun = new Mailgun(FormData);
 let mg;
 
 Emailer.init = async (params) => {

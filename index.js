@@ -69,7 +69,9 @@ async function send(data) {
 	formData.append('to', data.to);
 	formData.append('subject', data.subject);
 	formData.append('html', data.html);
-	formData.append('text', data.plaintetxt);
+	if (data.plaintext) {
+		formData.append('text', data.plaintext);
+	}
 	const { apiKey, domain, eu } = await meta.settings.get('mailgun');
 	axios({
 		method: 'post',

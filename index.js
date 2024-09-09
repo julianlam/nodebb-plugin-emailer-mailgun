@@ -1,9 +1,12 @@
 'use strict';
 
+const axios = require('axios');
+
 const winston = require.main.require('winston');
+
 const meta = require.main.require('./src/meta');
 
-const Emailer = {};
+const Emailer = module.exports;
 
 const formData = require('form-data');
 const Mailgun = require('mailgun.js');
@@ -38,16 +41,17 @@ Emailer.send = async (data) => {
 		return data;
 	}
 
-	const { domain } = await meta.settings.get('mailgun');
+	// const { domain } = await meta.settings.get('mailgun');
 
 	try {
-		await mg.messages.create(domain, {
-			to: data.to,
-			subject: data.subject,
-			from: data.from,
-			html: data.html,
-			text: data.plaintext,
-		});
+		// await mg.messages.create(domain, {
+		// 	to: data.to,
+		// 	subject: data.subject,
+		// 	from: data.from,
+		// 	html: data.html,
+		// 	text: data.plaintext,
+		// });
+		await send(data);
 		winston.verbose(`[emailer.mailgun] Sent \`${data.template}\` email to uid ${data.uid}`);
 	} catch (err) {
 		console.log(err);
@@ -57,6 +61,31 @@ Emailer.send = async (data) => {
 
 	return data;
 };
+
+// https://github.com/mailgun/mailgun.js/issues/92#issuecomment-1508374854
+async function send(data) {
+	const formData = new FormData()
+	formData.append('from', data.from);
+	formData.append('to', data.to);
+	formData.append('subject', data.subject);
+	formData.append('html', data.html);
+	formData.append('text', data.plaintetxt);
+	const { apiKey, domain, eu } = await meta.settings.get('mailgun');
+	axios({
+		method: 'post',
+		url: eu === 'on' ?
+			`https://api.eu.mailgun.net/v3/${domain}/messages` :
+			`https://api.mailgun.net/v3/${domain}/messages`,
+		auth: {
+			username: 'api',
+			password: apiKey,
+		},
+		headers: {
+			...formData.getHeaders()
+		},
+		data: formData
+    });
+}
 
 Emailer.admin = {
 	menu: function (custom_header, callback) {
@@ -70,4 +99,4 @@ Emailer.admin = {
 	},
 };
 
-module.exports = Emailer;
+

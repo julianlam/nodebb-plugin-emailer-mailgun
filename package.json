@@ -30,7 +30,7 @@
     "compatibility": "^3.2.x"
   },
   "devDependencies": {
-    "eslint": "9.24.0",
+    "eslint": "9.25.0",
     "eslint-config-nodebb": "1.0.7",
     "eslint-plugin-import": "2.31.0"
   }

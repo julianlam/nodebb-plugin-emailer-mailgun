@@ -27,7 +27,7 @@
     "axios": "1.7.7"
   },
   "nbbpm": {
-    "compatibility": "^3.2.x"
+    "compatibility": "^3.2.x || 4.x"
   },
   "devDependencies": {
     "eslint": "9.28.0",

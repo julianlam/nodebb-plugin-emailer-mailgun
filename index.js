@@ -85,10 +85,10 @@ async function send(data) {
 			password: apiKey,
 		},
 		headers: {
-			...formData.getHeaders()
+			...formData.getHeaders(),
 		},
-		data: formData
-    });
+		data: formData,
+	});
 }
 
 Emailer.admin = {

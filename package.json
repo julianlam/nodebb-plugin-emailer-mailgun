@@ -32,6 +32,6 @@
   "devDependencies": {
     "eslint": "9.30.0",
     "eslint-config-nodebb": "1.1.8",
-    "eslint-plugin-import": "2.31.0"
+    "eslint-plugin-import": "2.32.0"
   }
 }

@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/julianlam/nodebb-plugin-emailer-mailgun"
   },
+  "scripts": {
+    "lint": "eslint ."
+  },
   "keywords": [
     "nodebb",
     "plugin",
@@ -31,7 +34,6 @@
   },
   "devDependencies": {
     "eslint": "10.8.0",
-    "eslint-config-nodebb": "2.0.3",
-    "eslint-plugin-import": "2.32.0"
+    "eslint-config-nodebb": "2.0.3"
   }
 }

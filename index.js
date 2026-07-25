@@ -1,26 +1,20 @@
 'use strict';
 
 const axios = require('axios');
-
-const winston = require.main.require('winston');
-
-const meta = require.main.require('./src/meta');
-
-const Emailer = module.exports;
-
 const FormData = require('form-data');
 const Mailgun = require('mailgun.js');
+
+const winston = nodebb.require('winston');
+
+const meta = nodebb.require('./src/meta');
+const routeHelpers = nodebb.require('./src/routes/helpers');
+
+const Emailer = module.exports;
 
 const mailgun = new Mailgun(FormData);
 let mg;
 
 Emailer.init = async (params) => {
-	function render(req, res) {
-		res.render('admin/plugins/emailer-mailgun', {
-			title: 'Emailer (Mailgun)',
-		});
-	}
-
 	const { apiKey, domain, eu } = await meta.settings.get('mailgun');
 	if (apiKey && domain) {
 		const options = { username: 'api', key: apiKey };
@@ -33,8 +27,11 @@ Emailer.init = async (params) => {
 		winston.error('[plugins/emailer-mailgun] API key or Domain not set!');
 	}
 
-	params.router.get('/admin/plugins/emailer-mailgun', params.middleware.admin.buildHeader, render);
-	params.router.get('/api/admin/plugins/emailer-mailgun', render);
+	routeHelpers.setupAdminPageRoute(params.router, '/admin/plugins/emailer-mailgun', function render(req, res) {
+		res.render('admin/plugins/emailer-mailgun', {
+			title: 'Emailer (Mailgun)',
+		});
+	});
 };
 
 Emailer.send = async (data) => {
@@ -43,16 +40,7 @@ Emailer.send = async (data) => {
 		return data;
 	}
 
-	// const { domain } = await meta.settings.get('mailgun');
-
 	try {
-		// await mg.messages.create(domain, {
-		// 	to: data.to,
-		// 	subject: data.subject,
-		// 	from: data.from,
-		// 	html: data.html,
-		// 	text: data.plaintext,
-		// });
 		await send(data);
 		winston.verbose(`[emailer.mailgun] Sent \`${data.template}\` email to uid ${data.uid}`);
 	} catch (err) {
@@ -66,7 +54,7 @@ Emailer.send = async (data) => {
 
 // https://github.com/mailgun/mailgun.js/issues/92#issuecomment-1508374854
 async function send(data) {
-	const formData = new FormData()
+	const formData = new FormData();
 	formData.append('from', data.from);
 	formData.append('to', data.to);
 	formData.append('subject', data.subject);

@@ -1,7 +1,5 @@
 'use strict';
 
-/* globals app, $, socket, define */
-
 define('admin/plugins/emailer-mailgun', ['settings'], (Settings) => {
 	const Module = {};
 

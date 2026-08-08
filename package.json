@@ -33,7 +33,7 @@
     "compatibility": "^3.2.x || 4.x"
   },
   "devDependencies": {
-    "eslint": "10.8.0",
+    "eslint": "10.8.1",
     "eslint-config-nodebb": "2.0.3"
   }
 }
